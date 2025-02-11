@@ -1,2 +1,6 @@
-h1 Admin::Products#show
-p Find me in app/views/admin/products/show.html.slim
+= image_tag @product.image
+h1 = @product.name
+p = number_to_currency(@product.price, unit: "¥", strip_insignificant_zeros: true)
+p = @product.description
+
+= link_to "編集", edit_admin_product_url(@product), class: "btn btn-primary"

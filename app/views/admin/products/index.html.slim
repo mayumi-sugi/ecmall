@@ -1,2 +1,27 @@
-h1 Admin::Products#index
-p Find me in app/views/admin/products/index.html.slim
+h1 商品の一覧
+
+= link_to "新規登録", new_admin_product_path, class: "btn btn-primary"
+
+.mb-3
+  table.table.table-hover
+    thead
+      tr
+        th Image & Name
+        th Price
+        th Stock
+        th CreatedAt
+        th UpdatedAt
+        th
+    tbody
+      - @products.each do |product|
+        tr
+          td
+            = image_tag product.image.variant(resize_to_limit: [100, 100])
+            = product.name
+          td
+            = number_to_currency(product.price, unit: "¥", strip_insignificant_zeros: true)
+          td = product.stock
+          td = product.created_at
+          td = product.updated_at
+          td
+            = link_to "編集", edit_admin_product_path(product), class: "btn btn-primary"
