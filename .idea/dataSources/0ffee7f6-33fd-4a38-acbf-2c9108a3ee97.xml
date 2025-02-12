@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>1171</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1156</IntrospectionStateNumber>
       <ServerVersion>14.15</ServerVersion>
       <StartupTime>1739086089</StartupTime>
       <TimeZones>true ACDT
@@ -810,7 +810,7 @@ false Zulu
 13740||10|C|G
 13740||-9223372036854775808|U|G
 13740||10|U|G</Grants>
-      <IntrospectionStateNumber>1171</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1156</IntrospectionStateNumber>
       <ObjectId>14106</ObjectId>
       <OwnerName>sugiyamamayumi</OwnerName>
     </database>
@@ -4243,8 +4243,8 @@ false Zulu
     <schema id="265" parent="4" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>1171</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2025-02-12.01:10:05</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>1156</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2025-02-11.07:58:22</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>526</StateNumber>
       <OwnerName>sugiyamamayumi</OwnerName>

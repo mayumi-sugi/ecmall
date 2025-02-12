@@ -1,9 +1,0 @@
-.container.mt-5
-  .row
-    .col
-      = image_tag @product.image
-    .col
-      h1 = @product.name
-      p = number_to_currency(@product.price, unit: "¥", strip_insignificant_zeros: true)
-      p = @product.description
-
