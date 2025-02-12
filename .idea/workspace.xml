@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e67091e-0ce0-4aad-9a11-907551792afd" name="変更" comment="" />
+    <list default="true" id="7e67091e-0ce0-4aad-9a11-907551792afd" name="変更" comment="workspaceファイルの変更" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -137,12 +137,22 @@
       <workItem from="1738848256900" duration="49857000" />
       <workItem from="1739085464532" duration="8497000" />
     </task>
+    <task id="LOCAL-00001" summary="workspaceファイルの変更">
+      <option name="closed" value="true" />
+      <created>1739354607524</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1739354607524</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="workspaceファイルの変更" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspaceファイルの変更" />
   </component>
 </project>
