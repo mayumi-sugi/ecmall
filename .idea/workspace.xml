@@ -5,30 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e67091e-0ce0-4aad-9a11-907551792afd" name="変更" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3ba0bbbe-37ba-46c6-a7b5-fe2642e18513/storage_v2/_src_/database/ecmall_development.LpTbjA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3ba0bbbe-37ba-46c6-a7b5-fe2642e18513/storage_v2/_src_/database/ecmall_development.LpTbjA/schema/public.abK9xQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/customer/products_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/customer/products_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/customer/products/index.html.slim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/customer/products/show.html.slim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/customer/products_controller_test.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/0ffee7f6-33fd-4a38-acbf-2c9108a3ee97.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0ffee7f6-33fd-4a38-acbf-2c9108a3ee97.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/0ffee7f6-33fd-4a38-acbf-2c9108a3ee97/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0ffee7f6-33fd-4a38-acbf-2c9108a3ee97/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1280e654-b9f3-40b3-91a0-17d4066f876a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3ba0bbbe-37ba-46c6-a7b5-fe2642e18513.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1280e654-b9f3-40b3-91a0-17d4066f876a/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1280e654-b9f3-40b3-91a0-17d4066f876a/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/application_record.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/application_record.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/product.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/product.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/products_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/products_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/admin/products/edit.html.slim" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/products/edit.html.slim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/admin/products/index.html.slim" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/products/index.html.slim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/admin/products/new.html.slim" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/products/new.html.slim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/admin/products/show.html.slim" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/products/show.html.slim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/sessions/new.html.slim" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/sessions/new.html.slim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.slim" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.slim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +36,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "顧客側の商品に関する機能の実装",
+    "git-widget-placeholder": "管理者側の商品に関する機能の実装2",
     "last_opened_file_path": "/Users/sugiyamamayumi/RubymineProjects/ecmall",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -76,11 +62,7 @@
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" runner="rcov" />
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
@@ -100,11 +82,7 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" runner="rcov" />
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="spec" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
@@ -127,11 +105,7 @@
         <env name="RAILS_ENV" value="test" />
       </envs>
       <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" runner="rcov" />
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="test" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
@@ -161,7 +135,6 @@
       <updated>1738848255826</updated>
       <workItem from="1738848256900" duration="49857000" />
       <workItem from="1739085464532" duration="8497000" />
-      <workItem from="1739322700686" duration="15702000" />
     </task>
     <servers />
   </component>
