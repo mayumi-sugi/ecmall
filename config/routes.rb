@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
+  namespace :customer do
+    get "products/index"
+    get "products/show"
+  end
   devise_for :admins, controllers: {
     sessions: "admin/sessions"
   }
-  # root to: "customer/products#index"
+  root to: "customer/products#index"
   devise_for :customers, controllers: {
     sessions: "customer/sessions",
     registrations: "customer/registrations"
   }
   namespace :admin do
     resources :products, only: %i[index show new create edit update]
+  end
+  scope module: :customer do
+    resources :products, only: %i[index show]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

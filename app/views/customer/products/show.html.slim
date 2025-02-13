@@ -6,4 +6,3 @@
       h1 = @product.name
       p = number_to_currency(@product.price, unit: "¥", strip_insignificant_zeros: true)
       p = @product.description
-      = link_to "編集", edit_admin_product_url(@product), class: "btn btn-primary"
