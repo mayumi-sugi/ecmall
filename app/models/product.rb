@@ -8,4 +8,7 @@ class Product < ApplicationRecord
   end
   # 画像データとproductテーブルの紐付け
   has_one_attached :image
+
+  scope :price_high_to_low, -> { order(price: :desc) }
+  scope :price_low_to_high, -> { order(price: :asc) }
 end
