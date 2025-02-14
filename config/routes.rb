@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :customer do
-    get "products/index"
-    get "products/show"
-  end
   devise_for :admins, controllers: {
     sessions: "admin/sessions"
   }
