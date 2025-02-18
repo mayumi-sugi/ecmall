@@ -31,6 +31,14 @@ html
           ul.navbar-nav.me-auto.mb-2.mb-lg-0
             li.nav-item
               = link_to "ログアウト", destroy_customer_session_path, data: { turbo_method: :delete }, class: "nav-link"
+    .text-center.mt-5
+      - if notice
+        .alert.alert-primary
+          = notice
+      - if alert
+        .alert.alert-danger
+          = alert
+
     .container
       = yield
       footer.text-center.mt-5

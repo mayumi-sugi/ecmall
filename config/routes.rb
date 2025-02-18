@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :customer do
+    get "cart_items/index"
+  end
   devise_for :admins, controllers: {
     sessions: "admin/sessions"
   }
@@ -12,6 +15,12 @@ Rails.application.routes.draw do
   end
   scope module: :customer do
     resources :products, only: %i[index show]
+    resources :cart_items, only: %i[index create destroy] do
+      member do
+        patch "increase"
+        patch "decrease"
+      end
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

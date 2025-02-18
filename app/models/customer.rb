@@ -5,4 +5,5 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, presence: true
   enum :status, { normal: 0, withdrawn: 1, banned: 2 }
+  has_many :cart_items, dependent: :destroy
 end

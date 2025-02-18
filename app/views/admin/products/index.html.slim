@@ -2,28 +2,28 @@
   .text-center.mt-5
     h1 商品の一覧
 
-    = link_to "新規登録", new_admin_product_path, class: "btn btn-primary"
+  = link_to "新規登録", new_admin_product_path, class: "btn btn-primary"
 
-    .mb-3
-    table.table.table-hover
-      thead
+  .mb-3
+  table.table.table-hover
+    thead
+      tr
+        th Image & Name
+        th Price
+        th Stock
+        th CreatedAt
+        th UpdatedAt
+        th
+    tbody
+      - @products.each do |product|
         tr
-          th Image & Name
-          th Price
-          th Stock
-          th CreatedAt
-          th UpdatedAt
-          th
-      tbody
-        - @products.each do |product|
-          tr
-            td
-              = image_tag product.image.variant(resize_to_limit: [100, 100])
-              = product.name
-            td
-              = number_to_currency(product.price, unit: "¥", strip_insignificant_zeros: true)
-            td = product.stock
-            td = product.created_at
-            td = product.updated_at
-            td
-              = link_to "編集", edit_admin_product_path(product), class: "btn btn-primary"
+          td
+            = image_tag product.image.variant(resize_to_limit: [100, 100])
+            = product.name
+          td
+            = number_to_currency(product.price, unit: "¥", strip_insignificant_zeros: true)
+          td = product.stock
+          td = product.created_at
+          td = product.updated_at
+          td
+            = link_to "編集", edit_admin_product_path(product), class: "btn btn-primary"
