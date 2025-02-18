@@ -6,3 +6,7 @@
       h1 = @product.name
       p = number_to_currency(@product.price, unit: "¥", strip_insignificant_zeros: true)
       p = @product.description
+      - if @product.stock > 0
+        = form_with model: @cart_item, data: { turbo: false } do |f|
+          = f.hidden_field :product_id, :value => @product.id
+          = f.submit "カートに追加", class: "btn btn-primary w-100"
