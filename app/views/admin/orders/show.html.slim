@@ -1,0 +1,62 @@
+div
+  h1
+    | Order ID # = @order.id
+  p
+    CreatedAt: = 1 @order.created_at, format: :short
+  p
+    UpdatedAt: = 1 @order.updated_at, format: :short
+
+div
+  p
+    | Customer's Cart
+    - @order.order_details.each do |order_detail|
+      = image_tag order_detail.product.image
+      = order_detail.product.name
+      = number_to_currency(order_detail.price, unit: "¥", strip_insignificant_zeros: true)
+      Qty: = order_detail.quantity
+
+div
+  h3
+    | Summary
+  div
+    p
+      | Subtotal
+      = number_to_currency(@order.billing_amount - @order.postage, unit: "¥", strip_insignificant_zeros: true)
+  div
+    p
+      | Shipping
+      = number_to_currency(@order.postage, unit: "¥", strip_insignificant_zeros: true)
+  div
+    p
+      | Total
+      = number_to_currency(@order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
+
+div
+  h3
+    | Customer
+    = @order.customer.name
+  p
+    = @order.cuxtomer.orders.count
+    | Previous order
+    = @order.customer.email
+
+div
+  p
+    | Shipping Address
+  div
+    p
+      | Name:
+      = @order.name
+    p
+      | Postal Code:
+      = @order.postal_code
+    p
+      | Prefecture:
+      = @order.prefecture
+    p
+      | Address1:
+      = @order.address1
+    p
+      | Address2:
+      = @order.address2
+
