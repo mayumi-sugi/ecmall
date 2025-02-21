@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
-  namespace :customer do
-    get "cart_items/index"
-  end
   devise_for :admins, controllers: {
     sessions: "admin/sessions"
   }
-  root to: "customer/products#index"
   devise_for :customers, controllers: {
     sessions: "customer/sessions",
     registrations: "customer/registrations"
   }
+  root to: "customer/products#index"
   namespace :admin do
+    root to: "pages#home"
     resources :products, only: %i[index show new create edit update]
+    resources :orders, only: %i[show update]
   end
   scope module: :customer do
     resources :products, only: %i[index show]
