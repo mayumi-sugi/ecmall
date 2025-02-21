@@ -11,7 +11,7 @@ div
   div
     h1
       | Order Status
-      = f.select :status, options_for_select(Order.statuses.key.to_a, @selected), { prompt: "all" }
+      = f.select :status, options_for_select(Order.statuses.keys.to_a, @selected), { prompt: "all" }
       = f.submit "Search", class: "btn btn-primary"
 
 table.table.table-hover
