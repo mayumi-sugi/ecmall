@@ -12,7 +12,7 @@ class Admin::PagesController < ApplicationController
 
   def get_orders(params)
     if !params[:status].present? || !Order.statuses.keys.to_a.include?(params[:status])
-      return [Order.latest, "all"]
+      return [ Order.latest, "all" ]
     end
 
     get_by_enum_value(params[:status])
@@ -21,15 +21,15 @@ class Admin::PagesController < ApplicationController
   def get_by_enum_value(status)
     case status
     when "waiting_payment"
-      [Order.latest.waiting_payment, "waiting_payment"]
+      [ Order.latest.waiting_payment, "waiting_payment" ]
     when "confirm_payment"
-      [Order.latest.confirt_payment, "confirm_payment"]
+      [ Order.latest.confirt_payment, "confirm_payment" ]
     when "shipped"
-      [Order.latest.shipped, "shipped"]
+      [ Order.latest.shipped, "shipped" ]
     when "out_of_delivery"
-      [Order.latest.out_of_delivery, "out_of_delivery"]
+      [ Order.latest.out_of_delivery, "out_of_delivery" ]
     when "delivered"
-      [Order.latest.delivered, "delivered"]
+      [ Order.latest.delivered, "delivered" ]
     end
   end
   # 1日の注文数を返すメソッド
