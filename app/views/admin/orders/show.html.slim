@@ -14,7 +14,7 @@ div
       = order_detail.product.name
       = number_to_currency(order_detail.price, unit: "¥", strip_insignificant_zeros: true)
       p
-        Qty:
+        | Qty:
         = order_detail.quantity
 
 div
