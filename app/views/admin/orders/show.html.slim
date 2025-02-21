@@ -2,9 +2,9 @@ div
   h1
     | Order ID # = @order.id
   p
-    CreatedAt: = 1 @order.created_at, format: :short
+    CreatedAt: = l @order.created_at, format: :short
   p
-    UpdatedAt: = 1 @order.updated_at, format: :short
+    UpdatedAt: = l @order.updated_at, format: :short
 
 div
   p
@@ -13,7 +13,9 @@ div
       = image_tag order_detail.product.image
       = order_detail.product.name
       = number_to_currency(order_detail.price, unit: "¥", strip_insignificant_zeros: true)
-      Qty: = order_detail.quantity
+      p
+        Qty:
+        = order_detail.quantity
 
 div
   h3
