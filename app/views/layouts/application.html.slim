@@ -43,8 +43,12 @@ html
             li.nav-item
               = link_to "商品一覧", products_path, class: "nav-link"
             li.nav-item
-              = link_to "カート", cart_items_path, class: "nav-link"
-                / = total_quantity(current_customer.cart_items)
+              = link_to cart_items_path, class: "nav-link" do
+                | カート
+                = total_quantity(current_customer.cart_items)
+            li.nav-item
+              = link_to orders_path, class: "nav-link" do
+                | 注文履歴
             li.nav-item
               = link_to "ログアウト", destroy_customer_session_path, data: { turbo_method: :delete }, class: "nav-link"
           - else
