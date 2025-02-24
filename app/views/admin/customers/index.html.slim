@@ -1,0 +1,33 @@
+.container
+  .text-center.mt-5
+    h1
+      | 顧客情報の一覧
+
+  .mb-3
+  table.table.table-hover
+    thead
+      tr
+        th Name
+        th Email
+        th Status
+        th Previous Orders
+        th
+    tbody
+      - @customers.each do |customer|
+        tr
+          td = customer.name
+          td = customer.email
+          td
+            - if customer.status === "normal"
+              p
+                | Normal
+            - elsif customer.status === "withdrawn"
+              p
+                | Withdrawn
+            - else
+              p
+                | Banned
+          / 注文の数の取得
+          td = customer.orders.size
+          td
+            = link_to "編集", admin_customer_path(customer), class: "btn btn-primary"
