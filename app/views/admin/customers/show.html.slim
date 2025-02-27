@@ -1,7 +1,8 @@
-div
-  h1
-    | Customer ID #
-    = @customer.id
+.container
+  .text-center.mt-5
+    h1
+      | Customer ID #
+      = @customer.id
   p
     | CreatedAt:
     = l @customer.created_at, format: :short
@@ -13,8 +14,9 @@ div
     h3
       | Customer
       = @customer.name
-        = @customer.order.count
-          | Previous Order
+    p
+    = @customer.orders.size
+    | Previous Order
   div
     = @customer.email
   div
@@ -22,9 +24,9 @@ div
       | Customer Status
     p
       | Current Status:
-      - if @customer.status === "normal"
+      - if @customer.status == "normal"
         | Normal
-      - elsif @customer.status === "withdrawn"
+      - elsif @customer.status == "withdrawn"
         | Withdrawn
       - else
         | Banned
@@ -53,5 +55,3 @@ div
       - else
         p
           | No history
-
-
