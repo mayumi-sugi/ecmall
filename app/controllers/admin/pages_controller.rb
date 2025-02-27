@@ -23,7 +23,7 @@ class Admin::PagesController < ApplicationController
     when "waiting_payment"
       [ Order.latest.waiting_payment, "waiting_payment" ]
     when "confirm_payment"
-      [ Order.latest.confirt_payment, "confirm_payment" ]
+      [ Order.latest.confirm_payment, "confirm_payment" ]
     when "shipped"
       [ Order.latest.shipped, "shipped" ]
     when "out_of_delivery"
