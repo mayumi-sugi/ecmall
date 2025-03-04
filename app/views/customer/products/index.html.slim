@@ -1,22 +1,27 @@
 .container
   .text-center.mt-5
     h1 商品一覧
-
-  = link_to "Latest", products_path(latest: true)
-  = link_to "Price: High to Low", products_path(price_high_to_low: true)
-  = link_to "Price: Low to High", products_path(price_low_to_high: true)
+  .row.mb-3.mt-5
+    .col-auto
+      = link_to "Latest", products_path(latest: true), class: "btn btn-light"
+    .col-auto
+      = link_to "Price: High to Low", products_path(price_high_to_low: true), class: "btn btn-light"
+    .col-auto
+      = link_to "Price: Low to High", products_path(price_low_to_high: true), class: "btn btn-light"
 
   .container
     .row
       - @products.each do |product|
-        .col-12.col-md-6.col-lg-4
-          = link_to product_path(product) do
-          .card style="width: 18rem;"
-            = image_tag product.image.variant(resize_to_limit: [200, 200]), class: "card-img-top"
-            .card-body
-              .card-title = product.name
-              .card-text = number_to_currency(product.price, unit: "¥", strip_insignificant_zeros: true)
-              -if product.stock > 0
-                In stock
-              -else
-                Out of stock
+        .col-12.col-md-6.col-lg-3
+          = link_to product_path(product), class: "text-decoration-none" do
+            .card
+              = image_tag product.image.variant(resize_to_limit: [200, 200]), class: "card-img-top"
+              .card-body
+                .card-title = product.name
+                .card-text = number_to_currency(product.price, unit: "¥", strip_insignificant_zeros: true)
+                - if product.stock > 0
+                  p
+                    | In stock
+                - else
+                  p
+                    | Out of stock
