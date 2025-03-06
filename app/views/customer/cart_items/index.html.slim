@@ -28,11 +28,11 @@
     | カートの中身
     h3
       | subtotal
-    = number_to_currency(@total, unit: "¥", strip_insignificant_zeros: true)
+      = number_to_currency(@total, unit: "¥", strip_insignificant_zeros: true)
     h3
       | postage
     = number_to_currency(POSTAGE, unit: "¥", strip_insignificant_zeros: true)
     h3
       | total
     = number_to_currency(@total + POSTAGE, unit: "¥", strip_insignificant_zeros: true)
-    = button_to "購入する", "#", class: "btn btn-primary"
+    = button_to "チェックアウト", class: "btn btn-primary"

@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  namespace :customer do
-    get "orders/index"
-    get "orders/show"
-    get "orders/success"
-  end
   devise_for :admins, controllers: {
     sessions: "admin/sessions"
   }
@@ -26,7 +21,7 @@ Rails.application.routes.draw do
         patch "decrease"
       end
     end
-    resources :orders, only: %i[index show] do
+    resources :orders, only: %i[index show new create] do
       collection do
         get "success"
       end

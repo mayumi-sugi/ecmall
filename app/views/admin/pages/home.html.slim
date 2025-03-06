@@ -26,7 +26,7 @@ table.table.table-hover
     - @orders.each do |order|
       tr
         td = order.customer.email
-        td = order.number_to_currency(order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
+        td = number_to_currency(order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
         td = order.status
         td = l order.created_at, format: :short
         td = link_to admin_order_path(order) do

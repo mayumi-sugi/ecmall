@@ -1,0 +1,34 @@
+.container
+  h1.text-center.mt-5
+    | 配送先情報
+  = form_with model: @order, local: true do |f|
+    = f.hidden_field :customer_id, :value => @customer_id
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: "form-control"
+    .form-group
+      = f.label :postal_code
+      = f.text_field :postal_code, class: "form-control"
+    .form-group
+      = f.label :prefecture
+      = f.text_field :prefecture, class: "form-control"
+    .form-group
+      = f.label :address1
+      = f.text_field :address1, class: "form-control"
+      .form-group
+        = f.label :address2
+        = f.text_field :address2, class: "form-control"
+      h2 支払い金額
+      .form-group
+        h3 小計:
+        = f.hidden_field :subtotal, value: @subtotal
+        = number_to_currency(@subtotal, unit: "¥", strip_insignificant_zeros: true)
+      .form-group
+        h3 送料:
+        = f.hidden_field :postage, value: POSTAGE
+        = number_to_currency(POSTAGE, unit: "¥", strip_insignificant_zeros: true)
+      .form-group
+        h3 合計:
+        = f.hidden_field :billing_amount, value: @billing_amount
+        = number_to_currency(@subtotal.to_i + @postage.to_i, unit: "¥", strip_insignificant_zeros: true)
+        = f.submit "購入する", class: "btn btn-primary mt-3 d-grid gap-2 col-3 mx-auto"

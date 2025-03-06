@@ -1,56 +1,49 @@
 .container
-  h1.text-center.mt-5
-    | 注文完了
-    = l @order.created_at, format: :short
-
+  p
+    | 注文詳細
+    - @order.order_details.each do |order_detail|
+      = link_to product_path(order.detail.product) do
+        = image_tag order_detail.product.image, class: "img-thumbnail"
+        div
+          p = order_detail.product.name
+          div
+            p = number_to_currency(order_detail.price, unit: "¥", strip_insignificant_zeros: true)
+            p
+              | Qty:
+              = order_detail.quantity
+  h3
+    | Summary
+      div
+        p = Subtotal
+        p = number_to_currency(@order.billing_amount - @order.postage, unit: "¥", strip_insignificant_zeros: true)
+      div
+        p = shipping
+        p = number_to_currency(@order.postage, unit: "¥", strip_insignificant_zeros: true)
+      div
+          p = Total
+          p = number_to_currency(@order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
   div
-    p
-      | 注文詳細
-      - @order.order_details.each do |order_detail|
-        = link_to product_path(order.detail.product) do
-          = image_tag order_detail.product.image, class: "img-thumbnail"
-          div
-            p = order_detail.product.name
-            div
-              p = number_to_currency(order_detail.price, unit: "¥", strip_insignificant_zeros: true)
-              p
-                | Qty:
-                = order_detail.quantity
-    div
-      h3
-        | Summary
-          div
-            p = Subtotal
-            p = number_to_currency(@order.billing_amount - @order.postage, unit: "¥", strip_insignificant_zeros: true)
-          div
-            p = shipping
-            p = number_to_currency(@order.postage, unit: "¥", strip_insignificant_zeros: true)
-          div
-            p = Total
-            p = number_to_currency(@order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
-    div
-      h3
-        | Shipping Address
-          div
-            p
-              | Name:
-              = order.name
-            p
-              | Postal Code:
-              = @order.postal_code
-            p
-              | Prefecture:
-              = @order.prefecture
-            p
-              | Address1:
-              = @order.address1
-              -if @order.address2
-                p
-                  | Address2:
-                  = @order.address2
-    div
-      h3
-        | Order Status
+    h3
+      | Shipping Address
         p
-          | Latest Status:
-          = @order.status
+          | Name:
+          = order.name
+        p
+          | Postal Code:
+          = @order.postal_code
+        p
+          | Prefecture:
+          = @order.prefecture
+        p
+          | Address1:
+          = @order.address1
+          -if @order.address2
+            p
+              | Address2:
+              = @order.address2
+div
+    h3
+      | Order Status
+      p
+        | Latest Status:
+        = @order.status
