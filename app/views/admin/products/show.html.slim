@@ -1,9 +1,11 @@
-.container.mt-5
+.container.w-75
+  .nav.justify-content-end.mb-5
+    = link_to "商品一覧へ", admin_products_path, class: "btn btn-light"
   .row
     .col
-      = image_tag @product.image
+      = image_tag @product.image, class: "height-auto w-100"
     .col
-      h1 = @product.name
-      p = number_to_currency(@product.price, unit: "¥", strip_insignificant_zeros: true)
+      h4.fw-bold = @product.name
+      p.fw-bold = number_to_currency(@product.price, unit: "¥", strip_insignificant_zeros: true)
       p = @product.description
-      = link_to "編集", edit_admin_product_url(@product), class: "btn btn-primary"
+      = link_to "編集", edit_admin_product_url(@product), class: "btn btn-primary w-100"

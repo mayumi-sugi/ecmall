@@ -1,10 +1,10 @@
-.container.mt-5
+.container.w-75
   .row
     .col
-      = image_tag @product.image
+      = image_tag @product.image, class: "height-auto w-100"
     .col
-      h1 = @product.name
-      p = number_to_currency(@product.price, unit: "¥", strip_insignificant_zeros: true)
+      h4.fw-bold = @product.name
+      p.fw-bold = number_to_currency(@product.price, unit: "¥", strip_insignificant_zeros: true)
       p = @product.description
       - if @product.stock > 0
         = form_with model: @cart_item, data: { turbo: false } do |f|

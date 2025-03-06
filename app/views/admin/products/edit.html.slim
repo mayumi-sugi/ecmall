@@ -2,6 +2,8 @@
   .text-center.mt-5
     h1.mb-5
       | 商品の編集
+  .nav.justify-content-end.mb-3
+    = link_to "商品一覧へ", admin_products_path, class: "btn btn-light"
 
   = form_with model: [:admin, @product], local: true do |f|
     .form-group

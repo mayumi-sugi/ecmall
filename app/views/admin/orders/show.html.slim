@@ -1,4 +1,4 @@
-div
+.container
   h1.mb-5
     | Order ID #
     = @order.id
@@ -8,8 +8,6 @@ div
   p
     | UpdatedAt:
     = l @order.updated_at, format: :short
-
-div
   p
     | Customer's Cart
     - @order.order_details.each do |order_detail|
@@ -17,51 +15,55 @@ div
       = order_detail.product.name
       = number_to_currency(order_detail.price, unit: "¥", strip_insignificant_zeros: true)
       p
-        | Qty:
-        = order_detail.quantity
-
-div
+      | Qty:
+      = order_detail.quantity
   h3
     | Summary
   div
     p
-      | Subtotal
-      = number_to_currency(@order.billing_amount - @order.postage, unit: "¥", strip_insignificant_zeros: true)
+    | Subtotal
+    = number_to_currency(@order.billing_amount - @order.postage, unit: "¥", strip_insignificant_zeros: true)
+    p
+    | Shipping
+    = number_to_currency(@order.postage, unit: "¥", strip_insignificant_zeros: true)
   div
     p
-      | Shipping
-      = number_to_currency(@order.postage, unit: "¥", strip_insignificant_zeros: true)
-  div
-    p
-      | Total
-      = number_to_currency(@order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
+    | Total
+    = number_to_currency(@order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
 
-div
-  h3
-    | Customer
-    = @order.customer.name
-  p
-    = @order.cuxtomer.orders.count
+  div
+    h3
+      | Customer:
+      = @order.customer.name
+    p
+    = @order.customer.orders.count
     | Previous order
     = @order.customer.email
 
-div
-  p
-    | Shipping Address
   div
     p
+      | Shipping Address
+    div
+      p
       | Name:
       = @order.name
-    p
+      p
       | Postal Code:
       = @order.postal_code
-    p
+      p
       | Prefecture:
       = @order.prefecture
-    p
+      p
       | Address1:
       = @order.address1
-    p
+      p
       | Address2:
       = @order.address2
-
+  h3
+    | Order Status
+    p
+    | Current Status:
+    = @order.status
+    = form_with model: @order, url: admin_order_path(@order),local: true do |f|
+      = f.select :status, Order.statuses.keys.to_a,{}
+      = f.submit "Update Order", class: "btn btn-primary"
