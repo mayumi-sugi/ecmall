@@ -30,5 +30,5 @@
       .form-group
         h3 合計:
         = f.hidden_field :billing_amount, value: @billing_amount
-        = number_to_currency(@subtotal.to_i + @postage.to_i, unit: "¥", strip_insignificant_zeros: true)
+        = number_to_currency(@subtotal + POSTAGE, unit: "¥", strip_insignificant_zeros: true)
         = f.submit "購入する", class: "btn btn-primary mt-3 d-grid gap-2 col-3 mx-auto"

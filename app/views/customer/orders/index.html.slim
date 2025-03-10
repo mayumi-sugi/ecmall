@@ -1,5 +1,5 @@
 .container
-  h1.text-center.mt-5
+  h1.text-center.mt-5.mb-5
     | 注文履歴
 
   - if @orders.count == 0
@@ -7,26 +7,26 @@
       | 注文履歴がありません
       = link_to "商品一覧へ", products_path, class: "btn btn-primary mt-3 d-grid gap-2 col-3 mx-auto"
   - else
-    ul
+    ul.list-unstyled.justify-content-center.m-auto.w-75
       - @orders.each do |order|
-        = link_to order_path(order) do
-        li
-          p
-          = l order.created_at, format: :short
-          p
-          = number_to_currency(order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
-          p
-          = order.status
-        div
-          p
-          | Name:
-          = order.name
-          p
-          | Postal Code:
-          = order.postal_code
-          p
-          | Prefecture:
-          = order.prefecture
-          p
-          | Address:
-          = order.address1 = order.address2
+        = link_to order_path(order), class: "text-decoration-none" do
+          li.p-3.mb-3.bg-light.rounded.text-dark
+            p
+            = l order.created_at, format: :short
+            p
+            = number_to_currency(order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
+            p
+            = order.status
+            div
+              p
+              | Name:
+              = order.name
+              p
+              | Postal Code:
+              = order.postal_code
+              p
+              | Prefecture:
+              = order.prefecture
+              p
+              | Address:
+              = order.address1 = order.address2

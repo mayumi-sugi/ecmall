@@ -18,7 +18,7 @@ class Customer::CartItemsController < ApplicationController
   end
 
   def decrease
-    decrease_or_destroy(@cart_items)
+    decrease_or_destroy(@cart_item)
     redirect_to request.referer, notice: "カートを更新しました"
   end
 

@@ -11,14 +11,13 @@ class Customer::OrdersController < ApplicationController
   def new
     # customer_id : customer 情報の取得（id)
     @customer = current_customer
-
+    @order = Order.new
     #
     # billing amount: カート情報の取得(価格、個数)
     #                  合計金額を計算
     # postage : 送料
     @subtotal = @customer.cart_items.inject(0) { |sum, cart_item| sum + cart_item.line_total }
     @billing_amount = @subtotal + POSTAGE
-    @order = Order.new
   end
 
   def create
@@ -26,6 +25,7 @@ class Customer::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
 
     if @order.save
+      OrderMailer.complete(@order).deliver_now
       current_customer.cart_items.destroy_all
       redirect_to success_orders_path(@order), notice: "購入が完了しました"
     else

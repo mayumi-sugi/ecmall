@@ -16,8 +16,10 @@
       - @products.each do |product|
         tr
           td
-            = image_tag product.image.variant(resize_to_limit: [100, 100])
-            = product.name
+            = link_to admin_product_path(product), class: "text-decoration-none" do
+              div.d-flex.align-items-center
+                = image_tag product.image.variant(resize_to_limit: [100, 100]), class: "me-3"
+                h6.text-dark.fw-bold = product.name
           td
             = number_to_currency(product.price, unit: "¥", strip_insignificant_zeros: true)
           td = product.stock

@@ -25,7 +25,7 @@ class Admin::ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to admin_product_url(@product), notice: "商品「#{@product.name}」を更新しました"
+      redirect_to admin_product_path(@product), notice: "商品「#{@product.name}」を更新しました"
     else
       render :edit
     end
