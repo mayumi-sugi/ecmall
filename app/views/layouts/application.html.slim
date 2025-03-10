@@ -21,7 +21,7 @@ html
   body
     nav.navbar.navbar-expand-lg.bg-body-tertiary
       .container
-        = link_to root_path, class: "navbar-brand" do
+        = link_to (admin_signed_in? ? admin_root_path : (customer_signed_in? ? products_path : root_path)), class: "navbar-brand" do
           | ecmall
         ul.navbar-nav.ml-auto.mb-2.mb-lg-0
           - if admin_signed_in?

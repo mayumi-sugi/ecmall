@@ -1,38 +1,53 @@
 .container
   h1.text-center.mt-5
     | ショッピングカート
+
   - if @cart_items.count == 0
     p.text-center.mt-5
       | カートに商品がありません
-    = link_to "商品一覧へ", products_path, class: "btn btn-primary mt-3 d-grid gap-2 col-3 mx-auto"
+    = link_to products_path, class: "btn btn-primary mt-3 d-grid gap-2 col-3 mx-auto" do
+      | 商品一覧に戻る
   - else
-    table.table.table-hover
-      thead
-        tr
-          th 商品名
-          th 価格
-          th 数量
-          th 小計
-          th
-      tbody
-        - @cart_items.each do |cart_item|
-          tr
-            td = cart_item.product.name
-            td = number_to_currency(cart_item.line_total, unit: "¥", strip_insignificant_zeros: true)
-            = cart_item.quantity
-            td = link_to "-", decrease_cart_item_path(cart_item), method: :patch
-            - unless cart_item.quantity >= cart_item.product.stock
-              = link_to "+", increase_cart_item_path(cart_item), method: :patch
-            td = button_to "削除", cart_item_path(cart_item), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger"
-  h2
-    | カートの中身
-    h3
-      | subtotal
-      = number_to_currency(@total, unit: "¥", strip_insignificant_zeros: true)
-    h3
-      | postage
-    = number_to_currency(POSTAGE, unit: "¥", strip_insignificant_zeros: true)
-    h3
-      | total
-    = number_to_currency(@total + POSTAGE, unit: "¥", strip_insignificant_zeros: true)
-    = button_to "チェックアウト", class: "btn btn-primary"
+    div.d-flex.justify-content-between
+      .col-md-7
+        table.table.table-hover
+          thead
+            tr
+              th 商品名
+              th 価格
+              th 個数
+              th 小計
+              th
+          tbody
+            - @cart_items.each do |cart_item|
+              tr
+                td.fw-bold = cart_item.product.name
+                td = number_to_currency(cart_item.product.price, unit: "¥", strip_insignificant_zeros: true)
+                td
+                  div.d-flex.justify-content-around
+                    = button_to "-", decrease_cart_item_path(cart_item), method: :patch, class: "text-danger fw-semibold border-0 bg-transparent"
+                    span.mx-2 = cart_item.quantity
+                    - unless cart_item.quantity >= cart_item.product.stock
+                      = button_to "+", increase_cart_item_path(cart_item), method: :patch, class: "text-primary fw-semibold border-0 bg-transparent"
+                td = number_to_currency(cart_item.line_total, unit: "¥", strip_insignificant_zeros: true)
+                td = button_to "削除", cart_item_path(cart_item), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger"
+      .col-md-4.ms-4
+        h3.mb-3.border-bottom.pb-3.text-center
+          | カートの中身
+        div.d-flex.justify-content-between.mb-4
+          p.fw-bold
+            | Subtotal
+          p
+            = number_to_currency(@total, unit: "¥", strip_insignificant_zeros: true)
+        div.d-flex.justify-content-between.mb-4
+          p.fw-bold
+            | Shipping
+          p
+            = number_to_currency(POSTAGE, unit: "¥", strip_insignificant_zeros: true)
+        div.d-flex.justify-content-between.mb-4
+          p.fw-bold
+            | Total
+          p
+            = number_to_currency(@total + POSTAGE, unit: "¥", strip_insignificant_zeros: true)
+        = button_to new_order_path, method: :get, data: { turbo: false }, class: "btn btn-primary w-100 mt-4" do
+          | チェックアウト

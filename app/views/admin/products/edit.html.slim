@@ -1,10 +1,7 @@
-.container
+.container.w-75
   .text-center.mt-5
     h1.mb-5
       | 商品の編集
-  .nav.justify-content-end.mb-3
-    = link_to "商品一覧へ", admin_products_path, class: "btn btn-light"
-
   = form_with model: [:admin, @product], local: true do |f|
     .form-group
       = f.label :name
@@ -21,5 +18,5 @@
     .form-group
       = f.label :image
       = f.file_field :image, class: "form-control"
-    = f.submit "Update Product", class: "btn btn-primary mt-5"
+    = f.submit "Update Product", class: "btn btn-primary mt-5 w-100"
 

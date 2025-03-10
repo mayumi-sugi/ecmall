@@ -19,8 +19,10 @@
               .card-title.fw-bold = product.name
               .card-text.fw-bold = number_to_currency(product.price, unit: "¥", strip_insignificant_zeros: true)
               - if product.stock > 0
-                p
-                  | In stock
+                p.text-primary.mt-2
+                  | In stock(
+                  = product.stock
+                  | )
               - else
-                p.text-danger
+                p.text-danger.mt-2
                   | Out of stock
