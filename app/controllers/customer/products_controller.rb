@@ -1,6 +1,12 @@
 class Customer::ProductsController < ApplicationController
   def index
     @products, @sort = get_products(params)
+    @rank_products = Product
+      .joins(:order_details)
+      .select("products.*, sum(order_details.quantity) as total_quantity")
+      .group("products.id")
+      .order("total_quantity desc")
+      .limit(3)
   end
 
   def show
