@@ -5,7 +5,7 @@
     = l @order.created_at, format: :short
   .row.justify-content-between.mt-5
     .col-md-5
-      div.bg-light.rounded.p-4
+      .bg-light.rounded.p-4
         h4
           | 注文の詳細
         - @order.order_details.each do |order_detail|
@@ -18,53 +18,53 @@
             | 数量:　
             = order_detail.quantity
     .col-md-6
-      div.bg-light.rounded.p-4
+      .bg-light.rounded.p-4
         h4
           | サマリー
-        div.d-flex.justify-content-between
+        .d-flex.justify-content-between
           p 小計
           p = number_to_currency(@order.billing_amount - @order.postage, unit: "¥", strip_insignificant_zeros: true)
-        div.d-flex.justify-content-between.border-bottom.mb-2
+        .d-flex.justify-content-between.border-bottom.mb-2
           p 送料
           p = number_to_currency(@order.postage, unit: "¥", strip_insignificant_zeros: true)
-        div.d-flex.justify-content-between
+        .d-flex.justify-content-between
           p.fw-bold
             | 合計
           p.fw-bold
             = number_to_currency(@order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
-      div.bg-light.rounded.p-4.mt-3
+      .bg-light.rounded.p-4.mt-3
         h4
           | 配送先住所
-        div.d-flex.justify-content-start
+        .d-flex.justify-content-start
           p
             | 名前:　
           p.fw-bold
             = @order.name
-        div.d-flex.justify-content-start
+        .d-flex.justify-content-start
           p
             | 郵便番号:　
           p.fw-bold
             = @order.postal_code
-        div.d-flex.justify-content-start
+        .d-flex.justify-content-start
           p
             | 都道府県:　
           p.fw-bold
             = @order.prefecture
-        div.d-flex.justify-content-start
+        .d-flex.justify-content-start
           p
             | 住所1:　
           p.fw-bold
             = @order.address1
         - if @order.address2
-        div.d-flex.justify-content-start
+        .d-flex.justify-content-start
           p
             | 住所2:　
           p.fw-bold
             = @order.address2
-      div.bg-light.rounded.p-4.mt-3
+      .bg-light.rounded.p-4.mt-3
         h4
           | 注文状況
-        div.d-flex.justify-content-start
+        .d-flex.justify-content-start
           p
             | 最新のステータス:　
           p.fw-bold.text-primary

@@ -7,10 +7,10 @@
       = f.label :name, "名前"
       = f.text_field :name, class: "form-control mt-2"
     .form-group
-      = f.label :email, "メールアドレス", class: "mt-4"
+      = f.label :email, "メールアドレス", class: "mt-3"
       = f.text_field :email, class: "form-control mt-2"
     .field
-      = f.label :password, "パスワード", class: "mt-4"
+      = f.label :password, "パスワード", class: "mt-3"
       - if @minimum_password_length
         em
           | (
@@ -19,7 +19,7 @@
       br
       = f.password_field :password, class:"form-control mt-2", autocomplete: "new-password"
     .field
-      = f.label :password_confirmation, "パスワード（確認）", class: "mt-4"
+      = f.label :password_confirmation, "パスワード（確認）", class: "mt-3"
       br
       = f.password_field :password_confirmation, class:" form-control mt-2", autocomplete: "new-password"
       .actions

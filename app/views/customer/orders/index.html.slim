@@ -19,27 +19,27 @@
               p.fw-bold.text-primary
                 span.bg-primary-subtle.px-2.py-1.rounded
                   = order.status
-            div.d-flex.justify-content-start
+            .d-flex.justify-content-start
               p
                 | 名前:　
               p.fw-bold
                 = order.name
-            div.d-flex.justify-content-start
+            .d-flex.justify-content-start
               p
                 | 郵便番号:　
               p.fw-bold
                 = order.postal_code
-            div.d-flex.justify-content-start
+            .d-flex.justify-content-start
               p
                 | 都道府県:　
               p.fw-bold
                 = order.prefecture
-            div.d-flex.justify-content-start
+            .d-flex.justify-content-start
               p
                 | 住所1:　
               p.fw-bold
                 = order.address1
-            div.d-flex.justify-content-start
+            .d-flex.justify-content-start
               - if order.address2
                 p
                   | 住所2:　

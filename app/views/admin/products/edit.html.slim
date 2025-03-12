@@ -4,19 +4,19 @@
       | 商品の編集
   = form_with model: [:admin, @product], local: true do |f|
     .form-group
-      = f.label :name
-      = f.text_field :name, class: "form-control"
+      = f.label :name, "名前", class: "mt-4"
+      = f.text_field :name, class: "form-control mt-2 mb-3"
     .form-group
-      = f.label :description
-      = f.text_area :description, class: "form-control"
+      = f.label :description, "商品の説明"
+      = f.text_area :description, class: "form-control mt-2 mb-3"
     .form-group
-      = f.label :price
-      = f.number_field :price, class: "form-control"
+      = f.label :price, "価格"
+      = f.number_field :price, class: "form-control mt-2 mb-3"
     .form-group
-      = f.label :stock
-      = f.number_field :stock, class: "form-control"
+      = f.label :stock, "在庫数"
+      = f.number_field :stock, class: "form-control mt-2 mb-3"
     .form-group
-      = f.label :image
-      = f.file_field :image, class: "form-control"
-    = f.submit "Update Product", class: "btn btn-primary mt-5 w-100"
+      = f.label :image, "商品画像"
+      = f.file_field :image, class: "form-control mt-2 mb-3"
+    = f.submit "更新する", class: "btn btn-primary mt-5 w-100"
 

@@ -6,24 +6,24 @@
   table.table.table-hover
     thead
       tr
-        th Image & Name
-        th Price
-        th Stock
-        th CreatedAt
-        th UpdatedAt
+        th 商品名
+        th 価格
+        th 在庫
+        th 注文日時
+        th 更新日時
         th
     tbody
       - @products.each do |product|
         tr
-          td
+          td.align-middle
             = link_to admin_product_path(product), class: "text-decoration-none" do
-              div.d-flex.align-items-center
+              .d-flex.align-items-center
                 = image_tag product.image.variant(resize_to_limit: [100, 100]), class: "me-3"
                 h6.text-dark.fw-bold = product.name
-          td
+          td.align-middle
             = number_to_currency(product.price, unit: "¥", strip_insignificant_zeros: true)
-          td = product.stock
-          td = product.created_at
-          td = product.updated_at
-          td
+          td.align-middle = product.stock
+          td.align-middle = product.created_at
+          td.align-middle = product.updated_at
+          td.align-middle
             = link_to "編集", edit_admin_product_path(product), class: "btn btn-primary"

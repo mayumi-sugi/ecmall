@@ -1,69 +1,88 @@
-.container
-  h1.mb-5
-    | Order ID #
+.container.w-75
+  h1.mt-5
+    | 注文 ID #
     = @order.id
-  p
-    | CreatedAt:
+  p.text-secondary
+    | 注文日時:　
     = l @order.created_at, format: :short
-  p
-    | UpdatedAt:
+  p.text-secondary
+    | 最終更新日時:　
     = l @order.updated_at, format: :short
-  p
-    | Customer's Cart
-    - @order.order_details.each do |order_detail|
-      = image_tag order_detail.product.image
-      = order_detail.product.name
-      = number_to_currency(order_detail.price, unit: "¥", strip_insignificant_zeros: true)
-      p
-      | Qty:
-      = order_detail.quantity
-  h3
-    | Summary
-  div
-    p
-    | Subtotal
-    = number_to_currency(@order.billing_amount - @order.postage, unit: "¥", strip_insignificant_zeros: true)
-    p
-    | Shipping
-    = number_to_currency(@order.postage, unit: "¥", strip_insignificant_zeros: true)
-  div
-    p
-    | Total
-    = number_to_currency(@order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
-
-  div
-    h3
-      | Customer:
-      = @order.customer.name
-    p
-    = @order.customer.orders.count
-    | Previous order
-    = @order.customer.email
-
-  div
-    p
-      | Shipping Address
-    div
-      p
-      | Name:
-      = @order.name
-      p
-      | Postal Code:
-      = @order.postal_code
-      p
-      | Prefecture:
-      = @order.prefecture
-      p
-      | Address1:
-      = @order.address1
-      p
-      | Address2:
-      = @order.address2
-  h3
-    | Order Status
-    p
-    | Current Status:
-    = @order.status
-    = form_with model: @order, url: admin_order_path(@order),local: true do |f|
-      = f.select :status, Order.statuses.keys.to_a,{}
-      = f.submit "Update Order", class: "btn btn-primary"
+  .row.justify-content-between.mt-5
+    .col-md-5
+      .bg-light.rounded.p-4.mb-3
+        h4
+          | 注文内容
+        - @order.order_details.each do |order_detail|
+          = image_tag order_detail.product.image.variant(resize_to_limit: [200, 200]), class: "mb-3"
+          p.fw-bold
+            = order_detail.product.name
+          p = number_to_currency(order_detail.price, unit: "¥", strip_insignificant_zeros: true)
+          p
+          | 数量:　
+          = order_detail.quantity
+      .bg-light.rounded.p-4
+        h4
+          | サマリー
+        .d-flex.justify-content-between
+          p 小計
+          p = number_to_currency(@order.billing_amount - @order.postage, unit: "¥", strip_insignificant_zeros: true)
+        .d-flex.justify-content-between.border-bottom.mb-2
+          p 送料
+          p = number_to_currency(@order.postage, unit: "¥", strip_insignificant_zeros: true)
+        .d-flex.justify-content-between
+          p.fw-bold
+            | 合計
+          p.fw-bold
+            = number_to_currency(@order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
+    .col-md-6
+      .bg-light.rounded.p-4.mb-3
+        h4
+          | お客様情報
+        p.fw-bold
+          = @order.customer.name
+        p.border-bottom.pb-3
+          = @order.customer.orders.count
+          | Previous order
+        p.mb-2
+          = @order.customer.email
+        h5.mt-3.mb-3
+          | 配送先住所
+        .d-flex.justify-content-start
+          p
+            | 名前:　
+          p.fw-bold
+            = @order.name
+        .d-flex.justify-content-start
+          p
+            | 郵便番号:　
+          p.fw-bold
+            = @order.postal_code
+        .d-flex.justify-content-start
+          p
+            | 都道府県:　
+          p.fw-bold
+            = @order.prefecture
+        .d-flex.justify-content-start
+          p
+            | 住所1:　
+          p.fw-bold
+            = @order.address1
+        - if @order.address2
+        .d-flex.justify-content-start
+          p
+            | 住所2:　
+          p.fw-bold
+            = @order.address2
+      .bg-light.rounded.p-4.mt-3
+        h4
+          | 注文状況
+        .d-flex.justify-content-start
+          p
+            | 現在のステータス:　
+          p.fw-bold.text-primary
+            span.bg-primary-subtle.px-2.py-1.rounded
+              = @order.status
+        = form_with model: @order, url: admin_order_path(@order),local: true do |f|
+          p = f.select :status, Order.statuses.keys.to_a,{}, class: "w-100"
+          p = f.submit "更新する", class: "btn btn-primary w-100 mt-3"
