@@ -1,17 +1,17 @@
 .container.w-75
   .row
-    .col
-      = image_tag @product.image, class: "height-auto w-100"
-    .col
+    .col-md-5
+      = image_tag @product.image.variant(resize_to_limit: [500, 500]), class: "me-3"
+    .col-md-6
       h4.fw-bold = @product.name
       p.fw-bold = number_to_currency(@product.price, unit: "¥", strip_insignificant_zeros: true)
       p = @product.description
       - if @product.stock > 0
         p.text-primary
-          | In stock (
+          | 在庫あり (
           = @product.stock
           | )
       - else
         p.fw-bold.text-danger
-          | Out of stock
+          | 在庫なし
       = link_to "編集", edit_admin_product_url(@product), class: "btn btn-primary w-100"

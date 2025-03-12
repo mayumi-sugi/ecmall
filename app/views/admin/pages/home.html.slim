@@ -1,33 +1,39 @@
-div
-  p
-    | Today's Sales
-    = number_to_currency(@today_total_sales, unit: "Y", strip_insignificant_zeros: true)
-div
-  p
-    | Today's Orders
-    = @today_total_orders
-
-= form_with url: admin_root_path, method: :get, local: true do |f|
-  div
-    h1
-      | Order Status
-      = f.select :status, options_for_select(Order.statuses.keys.to_a, @selected), { prompt: "all" }
-      = f.submit "Search", class: "btn btn-primary"
-
-table.table.table-hover
-  thead
-    tr
-      th Customer
-      th Billings
-      th Status
-      th Order date
-      th
-  tbody
-    - @orders.each do |order|
+.container.w-75
+  .row.d-flex.justify-content-between.mb-5
+    .col-md-5.bg-light.p-3
+      p.fw-bold
+        | 本日の売上
+      h5.fw-bold
+        = number_to_currency(@today_total_sales, unit: "¥", strip_insignificant_zeros: true)
+    .col-md-5.bg-light.p-3
+      p.fw-bold
+        | 本日の注文数
+      h5.fw-bold
+        = @today_total_orders
+  = form_with url: admin_root_path, method: :get, local: true do |f|
+    .d-flex.justify-content-start.mb-3
+      h4.fw-bold.me-2
+        | 注文状況
+      p
+        = f.select :status, options_for_select(Order.statuses.keys.to_a, @selected), { prompt: "all" }
+        = f.submit "検索", class: "btn btn-primary ms-3"
+  table.table.table-hover
+    thead
       tr
-        td = order.customer.email
-        td = number_to_currency(order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
-        td = order.status
-        td = l order.created_at, format: :short
-        td = link_to admin_order_path(order) do
-          | Details
+        th お客様
+        th 請求額
+        th ステータス
+        th 注文日時
+        th
+    tbody
+      - @orders.each do |order|
+        tr
+          td.align-middle = order.customer.email
+          td.align-middle = number_to_currency(order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
+          td.align-middle
+            .d-flex.align-items-center.fw-bold.text-primary
+              span.bg-primary-subtle.px-2.py-1.rounded
+                = order.status
+          td.align-middle = l order.created_at, format: :short
+          td.align-middle = link_to admin_order_path(order), class: "text-decoration-none text-secondary fw-bold" do
+            | 詳細

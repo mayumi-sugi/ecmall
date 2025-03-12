@@ -5,19 +5,19 @@
         h3.mb-5
           | お支払い金額
         .form-group
-          div.d-flex.justify-content-between
+          .d-flex.justify-content-between
             p 小計:
             = f.hidden_field :subtotal, value: @subtotal
             p
               = number_to_currency(@subtotal, unit: "¥", strip_insignificant_zeros: true)
         .form-group.border-bottom.mb-2
-          div.d-flex.justify-content-between
+          .d-flex.justify-content-between
             p 送料:
             = f.hidden_field :postage, value: POSTAGE
             p
               = number_to_currency(POSTAGE, unit: "¥", strip_insignificant_zeros: true)
         .form-group
-          div.d-flex.justify-content-between
+          .d-flex.justify-content-between
             p 合計:
             = f.hidden_field :billing_amount, value: @billing_amount
             p.fw-bold

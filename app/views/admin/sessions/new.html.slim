@@ -1,7 +1,7 @@
-.container
-  .text-center.mt-5
+.container.w-50
+  .text-center.mt-5.mb-5
     h1
-      | Log in
+      | ログイン
   = form_with(model: resource, url: session_path(resource_name), local: true) do |f|
     .form-group
       = f.label :email, "メールアドレス"
@@ -12,8 +12,8 @@
 
     - if devise_mapping.rememberable?
       .field
-        = f.check_box :remember_me
+        = f.check_box :remember_me, class: "me-1"
         = f.label :remember_me
     .actions
-      = f.submit "Log in", class: "btn btn-primary btn-lg mt-5 w-100"
+      = f.submit "ログイン", class: "btn btn-primary btn-lg mt-5 w-100"
   / = render "admin/shared/links"
