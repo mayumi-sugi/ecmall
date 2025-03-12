@@ -1,45 +1,72 @@
-.container
-  h1.text-center.mt-5.mb-5
-    | 注文詳細
+.container.w-75
+  h1.text-center.mt-5
+    | 注文確定
+  h4.text-center
     = l @order.created_at, format: :short
-- @order.order_details.each do |order_detail|
-  = link_to product_path(order.detail.product) do
-    = image_tag order_detail.product.image, class: "img-thumbnail"
-      p = order_detail.product.name
-      p = number_to_currency(order_detail.product.price, unit: "¥", strip_insignificant_zeros: true)
-      p
-        | Qty:
-        = order_detail.quantity
-h3
-  | Summary
-p Subtotal
-p = number_to_currency(@order.billing_amount - @order.postage, unit: "¥", strip_insignificant_zeros: true)
-p Shipping
-p = number_to_currency(@order.postage, unit: "¥", strip_insignificant_zeros: true)
-p Total
-p = number_to_currency(@order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
-div
-  h3
-    | Shipping Address
-    p
-      | Name:
-      = @order.name
-    p
-      | Postal Code:
-      = @order.postal_code
-    p
-      | Prefecture:
-      = @order.prefecture
-    p
-      | Address1:
-      = @order.address1
-    - if @order.address2
-      p
-        | Address2:
-        = @order.address2
-div
-  h3
-    | Order Status
-    p
-      | Latest Status:
-      = @order.status
+  .row.justify-content-between.mt-5
+    .col-md-5
+      div.bg-light.rounded.p-4
+        h4
+          | 注文の詳細
+        - @order.order_details.each do |order_detail|
+          = link_to product_path(order_detail.product) do
+            = image_tag order_detail.product.image.variant(resize_to_limit: [200, 200]), class: "mb-3"
+          p.fw-bold
+            = order_detail.product.name
+          p = number_to_currency(order_detail.product.price, unit: "¥", strip_insignificant_zeros: true)
+          p
+            | 数量:　
+            = order_detail.quantity
+    .col-md-6
+      div.bg-light.rounded.p-4
+        h4
+          | サマリー
+        div.d-flex.justify-content-between
+          p 小計
+          p = number_to_currency(@order.billing_amount - @order.postage, unit: "¥", strip_insignificant_zeros: true)
+        div.d-flex.justify-content-between.border-bottom.mb-2
+          p 送料
+          p = number_to_currency(@order.postage, unit: "¥", strip_insignificant_zeros: true)
+        div.d-flex.justify-content-between
+          p.fw-bold
+            | 合計
+          p.fw-bold
+            = number_to_currency(@order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
+      div.bg-light.rounded.p-4.mt-3
+        h4
+          | 配送先住所
+        div.d-flex.justify-content-start
+          p
+            | 名前:　
+          p.fw-bold
+            = @order.name
+        div.d-flex.justify-content-start
+          p
+            | 郵便番号:　
+          p.fw-bold
+            = @order.postal_code
+        div.d-flex.justify-content-start
+          p
+            | 都道府県:　
+          p.fw-bold
+            = @order.prefecture
+        div.d-flex.justify-content-start
+          p
+            | 住所1:　
+          p.fw-bold
+            = @order.address1
+        - if @order.address2
+        div.d-flex.justify-content-start
+          p
+            | 住所2:　
+          p.fw-bold
+            = @order.address2
+      div.bg-light.rounded.p-4.mt-3
+        h4
+          | 注文状況
+        div.d-flex.justify-content-start
+          p
+            | 最新のステータス:　
+          p.fw-bold.text-primary
+            span.bg-primary-subtle.px-2.py-1.rounded
+              = @order.status

@@ -27,7 +27,7 @@ html
           - if admin_signed_in?
             li.nav-item
               p.nav-link
-                | Signed in as：
+                | ご利用中のアカウント:　
                 = current_admin.email
             li.nab-item
               = link_to "注文履歴一覧", admin_root_path, class: "nav-link"
@@ -40,7 +40,7 @@ html
           - elsif customer_signed_in?
             li.nav-item
               p.nav-link
-                | Signed in as：
+                | ご利用中のアカウント:　
                 = current_customer.email
             li.nav-item
               = link_to "商品一覧", products_path, class: "nav-link"
@@ -55,9 +55,9 @@ html
               = link_to "ログアウト", destroy_customer_session_path, data: { turbo_method: :delete }, class: "nav-link"
           - else
             li.nav-item
-              = link_to "Sign Up", new_customer_registration_path, class: "nav-link"
+              = link_to "サインアップ", new_customer_registration_path, class: "nav-link"
             li.nav-item
-              = link_to "Sign In", new_customer_session_path, class: "nav-link"
+              = link_to "ログイン", new_customer_session_path, class: "nav-link"
     .text-center.mt-5
       - if flash[:notice]
         .alert.alert-primary

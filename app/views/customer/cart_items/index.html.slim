@@ -15,7 +15,7 @@
             tr
               th 商品名
               th 価格
-              th 個数
+              th 数量
               th 小計
               th
           tbody
@@ -36,17 +36,17 @@
           | カートの中身
         div.d-flex.justify-content-between.mb-4
           p.fw-bold
-            | Subtotal
+            | 小計
           p
             = number_to_currency(@total, unit: "¥", strip_insignificant_zeros: true)
         div.d-flex.justify-content-between.mb-4
           p.fw-bold
-            | Shipping
+            | 送料
           p
             = number_to_currency(POSTAGE, unit: "¥", strip_insignificant_zeros: true)
         div.d-flex.justify-content-between.mb-4
           p.fw-bold
-            | Total
+            | 合計
           p
             = number_to_currency(@total + POSTAGE, unit: "¥", strip_insignificant_zeros: true)
         = button_to new_order_path, method: :get, data: { turbo: false }, class: "btn btn-primary w-100 mt-4" do
