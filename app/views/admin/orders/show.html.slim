@@ -6,9 +6,9 @@
     | 注文日時:　
     = l @order.created_at, format: :short
   p.text-secondary
-    | 最終更新日時:　
+    | 更新日時:　
     = l @order.updated_at, format: :short
-  .row.justify-content-between.mt-5
+  .row.justify-content-around.mt-5
     .col-md-5
       .bg-light.rounded.p-4.mb-3
         h4
@@ -81,7 +81,7 @@
           p
             | 現在のステータス:　
           p.fw-bold.text-primary
-            span.bg-primary-subtle.px-2.py-1.rounded
+            span.bg-primary-subtle.px-2.py-2.rounded
               = @order.status
         = form_with model: @order, url: admin_order_path(@order),local: true do |f|
           p = f.select :status, Order.statuses.keys.to_a,{}, class: "w-100"
