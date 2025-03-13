@@ -1,30 +1,29 @@
-.container
+.container.w-75
   .text-center.mt-5
     h1.mb-5
       | 顧客情報の一覧
   table.table.table-hover
     thead
       tr
-        th Name
-        th Email
-        th Status
-        th Previous Orders
+        th 名前
+        th メールアドレス
+        th ステータス
+        th 前回の注文数
         th
     tbody
       - @customers.each do |customer|
         tr
-          td = customer.name
-          td = customer.email
-          td
-            - if customer.status == "normal"
-              p
-                | Normal
-            - elsif customer.status == "withdrawn"
-              p
-                | Withdrawn
-            - else
-              p
-                | Banned
+          td.align-middle = customer.name
+          td.align-middle = customer.email
+          td.align-middle
+            .d-flex.align-items-center.fw-bold.text-primary
+              span.bg-primary-subtle.px-2.py-1.rounded
+                - if customer.status == "normal"
+                  | Normal
+                - elsif customer.status == "withdrawn"
+                  | Withdrawn
+                - else
+                  | Banned
           / 注文の数の取得
-          td = customer.orders.size
-          td = link_to "編集", admin_customer_path(customer), class: "btn btn-primary"
+          td.align-middle = customer.orders.size
+          td.align-middle = link_to "編集", admin_customer_path(customer), class: "btn btn-primary"

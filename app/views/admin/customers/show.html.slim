@@ -1,56 +1,65 @@
-.container
-  .text-center.mt-5
-    h1
-      | Customer ID #
-      = @customer.id
-  p
-    | CreatedAt:
+.container.w-75
+  h1.mt-4
+    | お客様 ID #
+    = @customer.id
+  p.text-secondary
+    | 注文日時:　
     = l @customer.created_at, format: :short
-  p
-    | UpdatedAt:
+  p.text-secondary
+    | 更新日時:　
     = l @customer.updated_at, format: :short
-  div
-    h3
-      | Customer
-      = @customer.name
-    p
-    = @customer.orders.size
-    | Previous Order
-  div
-    = @customer.email
-  div
-    h3
-      | Customer Status
-    p
-      | Current Status:
-      - if @customer.status == "normal"
-        | Normal
-      - elsif @customer.status == "withdrawn"
-        | Withdrawn
-      - else
-        | Banned
-    = form_with model: @customer, url: admin_customer_path(@customer), local: true do |f|
-      = f.select :status, Customer.statuses.keys.to_a, {}, class: "form-control"
-      = f.submit "Update Status", class: "btn btn-primary mt-3"
-  div
-    h3
-      | Order History
-      - if @customer.orders.size > 0
-        table.table.table-hover
-          thead
-            tr
-              th Billings
-              th Status
-              th Order date
-              th
-          tbody
-            - @customer.orders.latest.each do |order|
-              tr
-                td = number_to_currency(order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
-                td = order.status
-                td = l order.created_at, format: :short
-                td = link_to admin_order_path(order), class: "btn btn-primary" do
-                  | Details
-      - else
+  .row.justify-content-around.mt-5
+    .col-md-5
+      .bg-light.rounded.p-4.mb-3
+        h4
+          | お客様情報
+        p.fw-bold
+          = @customer.name
         p
-          | No history
+        = @customer.orders.size
+        | Previous Orders
+        p
+        = @customer.email
+      .bg-light.rounded.p-4.mb-3
+        h4
+          | お客様のステータス:　
+        .d-flex.justify-content-start
+          p
+            | 現在のステータス:　
+          p.fw-bold.text-primary
+            span.bg-primary-subtle.px-2.py-1.rounded
+              - if @customer.status == "normal"
+                | Normal
+              - elsif @customer.status == "withdrawn"
+                | Withdrawn
+              - else
+                | Banned
+        = form_with model: @customer, url: admin_customer_path(@customer), local: true do |f|
+          = f.select :status, Customer.statuses.keys.to_a, {}, class: "form-control"
+          = f.submit "Update Status", class: "btn btn-primary mt-3 w-100"
+    .col-md-7
+      .bg-light.rounded.p-4.mb-3
+        h4
+          | 注文履歴
+        - if @customer.orders.size > 0
+          table.table.table-hover.table-light
+            thead
+              tr
+                th 請求額
+                th ステータス
+                th 注文日時
+                th
+            tbody
+              - @customer.orders.latest.each do |order|
+                tr
+                  td.align-middle = number_to_currency(order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
+                  td.align-middle
+                    .fw-bold.text-primary
+                      span.bg-primary-subtle.px-2.py-1.rounded
+                        = order.status
+                  td.align-middle = l order.created_at, format: :short
+                  td.align-middle = link_to admin_order_path(order), class: "btn btn-primary" do
+                    | 詳細
+        - else
+          h6.text-secondary
+            | 履歴なし
