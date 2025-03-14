@@ -1,5 +1,34 @@
 = @order.name + " 様"
 = "\r\n" * 2
-| ご注文ありがとうございました。以下の内容で注文が確定しました。
+| いつもecmallをご利用いただきありがとうございます。
 = "\r\n" * 2
-| またのご利用をお待ちしております。
+| ご注文のお支払いが完了いたしました。
+= "\r\n" * 2
+| 下記注文内訳をご確認ください。
+= "\r\n" * 2
+|ご注文番号:
+= @order.id
+= "\r\n" * 2
+| 注文日時:
+= @order.created_at.strftime("%Y年%m月%d日 %H:%M")
+= "\r\n" * 2
+- @order.order_details.each do |order_detail|
+  | 商品名:　
+  = order_detail.product.name
+  = "\r\n"
+  | 　単価:　
+  = number_to_currency(order_detail.product.price, unit: "¥", strip_insignificant_zeros: true)
+  = "\r\n"
+  | 　数量:　
+  = order_detail.quantity
+  = "\r\n"
+  | 　小計:　
+  = number_to_currency(order_detail.product.price * order_detail.quantity, unit: "¥", strip_insignificant_zeros: true)
+  = "\r\n"
+  | 　送料:　
+  = number_to_currency(POSTAGE, unit: "¥", strip_insignificant_zeros: true)
+  = "\r\n"
+  | 　合計:　
+  = number_to_currency(order_detail.product.price * order_detail.quantity + POSTAGE, unit: "¥", strip_insignificant_zeros: true)
+  = "\r\n" * 2
+| 商品が届くまで今しばらくお待ちください。
