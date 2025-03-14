@@ -32,7 +32,10 @@ class Customer::OrdersController < ApplicationController
         redirect_to success_orders_path(@order), notice: "購入が完了しました"
       else
         # binding.irb
-        render :new
+        @customer = current_customer
+        @subtotal = @customer.cart_items.inject(0) { |sum, cart_item| sum + cart_item.line_total }
+        @billing_amount = @subtotal + POSTAGE
+        render :new, status: :unprocessable_entity
       end
     end
   rescue ActiveRecord::RecordInvalid
