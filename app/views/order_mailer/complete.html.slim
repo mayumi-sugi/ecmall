@@ -1,6 +1,28 @@
-p  = @order.name + " 様"
-p この度はご注文ありがとうございました。
+p #{@order.name} 様
+p いつもecmallをご利用いただきありがとうございます。
+p ご注文のお支払いが完了いたしました。
+p 下記注文内訳をご確認ください。
 p ご注文番号: #{@order.id}
 p 注文日時: #{@order.created_at.strftime("%Y年%m月%d日 %H:%M")}
-
-p またのご利用をお待ちしております。
+table.table.table-bordered.table-hover
+  - @order.order_details.each do |order_detail|
+    tbody
+      tr
+        th 商品名
+        td = order_detail.product.name
+      tr
+        th 単価
+        td = number_to_currency(order_detail.product.price, unit: "¥", strip_insignificant_zeros: true)
+      tr
+        th 数量
+        td = order_detail.quantity
+      tr
+        th 小計
+        td = number_to_currency(order_detail.product.price * order_detail.quantity, unit: "¥", strip_insignificant_zeros: true)
+      tr
+        th 送料
+        td = number_to_currency(POSTAGE, unit: "¥", strip_insignificant_zeros: true)
+      tr
+        th 合計
+        td = number_to_currency(order_detail.product.price * order_detail.quantity + POSTAGE, unit: "¥", strip_insignificant_zeros: true)
+p 商品が届くまで今しばらくお待ちください。
