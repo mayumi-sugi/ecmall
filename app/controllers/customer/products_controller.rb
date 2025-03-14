@@ -1,6 +1,8 @@
 class Customer::ProductsController < ApplicationController
   def index
-    @products, @sort = get_products(params)
+    # @products, @sort = get_products(params)
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true).order(created_at: :asc)
     @rank_products = Product
       .joins(:order_details)
       .select("products.*, sum(order_details.quantity) as total_quantity")
@@ -14,15 +16,15 @@ class Customer::ProductsController < ApplicationController
     @cart_item = CartItem.new
   end
 
-  private
+  # private
 
-  def get_products(params)
-    return Product.all, "default" unless params[:latest] || params[:price_high_to_low] || params[:price_low_to_high]
-
-    return Product.latest, "latest" if params[:latest]
-
-    return Product.price_high_to_low, "price_high_to_low" if params[:price_high_to_low]
-
-    return Product.price_low_to_high, "price_low_to_high" if params[:price_low_to_high]
-  end
+  # def get_products(params)
+  #   return Product.all, "default" unless params[:latest] || params[:price_high_to_low] || params[:price_low_to_high]
+  #
+  #   return Product.latest, "latest" if params[:latest]
+  #
+  #   return Product.price_high_to_low, "price_high_to_low" if params[:price_high_to_low]
+  #
+  #   return Product.price_low_to_high, "price_low_to_high" if params[:price_low_to_high]
+  # end
 end

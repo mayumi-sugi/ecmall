@@ -5,6 +5,7 @@ gem "rails", "~> 8.0.1"
 gem "devise"
 gem "slim-rails"
 gem "html2slim-ruby3"
+gem "ransack"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"

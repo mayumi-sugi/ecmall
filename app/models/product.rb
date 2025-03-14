@@ -14,4 +14,9 @@ class Product < ApplicationRecord
 
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
+
+  # Ransackの検索可能なカラムを指定
+  def self.ransackable_attributes(auth_object = nil)
+    [ "name", "description", "price", "stock", "created_at", "updated_at" ]
+  end
 end
