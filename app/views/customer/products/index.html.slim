@@ -1,16 +1,11 @@
-.text-center.mt-5
-  h1 商品の一覧
-.row.mb-3.mt-5
-  .col-auto
-    = link_to "新着順", products_path(latest: true), class: "btn btn-light"
-  .col-auto
-    = link_to "価格が高い順", products_path(price_high_to_low: true), class: "btn btn-light"
-  .col-auto
-    = link_to "価格が安い順", products_path(price_low_to_high: true), class: "btn btn-light"
-
 .container
-  .row.justify-content-between
-    .col-lg-9
+  .text-center.mt-5.mb-5
+    h1 商品の一覧
+  .row.justify-content-around
+    .col-lg-8
+      .d-flex.justify-content-end.mb-2
+        = sort_link(@q, :created_at, "新着順", default_order: :desc, class: "text-decoration-none text-secondary")
+        = sort_link(@q, :price, "価格が高い順", class: "text-decoration-none ms-3 text-secondary")
       .row
         - @products.each do |product|
           .col-12.col-md-4.col-lg-4.mb-4
@@ -29,13 +24,20 @@
                   - else
                     p.text-danger.mt-2
                       | 在庫なし
-    .col-lg-2.ms-1
-      h3.fw-bold ランキング
+    .col-lg-3.ms-1
+      = search_form_for @q, url: products_path, method: :get do |f|
+        h4.fw-bold.mb-3
+          = f.label :name_cont, "商品名検索"
+        .d-flex.justify-content-between
+          = f.search_field :name_cont, class: "form-control"
+          = f.submit "検索", class: "btn btn-primary ms-3"
+      h4.fw-bold.mt-5
+        | ランキング
       - @rank_products.each.with_index(1) do |product, i|
         p.fw-bold
           | 第
           = i
-          |位
+          | 位
         li.list-unstyled.mb-4
           = link_to product_path(product) do
             = image_tag product.image, class: "img-thumbnail mb-2"
