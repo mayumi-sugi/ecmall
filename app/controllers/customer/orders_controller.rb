@@ -58,6 +58,9 @@ class Customer::OrdersController < ApplicationController
         quantity: cart_item.quantity,
         price: cart_item.product.price
       )
+      product = cart_item.product
+      product.stock -= cart_item.quantity
+      product.save!
     end
   end
 end
