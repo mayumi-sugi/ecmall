@@ -26,6 +26,7 @@
         h3.mb-5
           | 配送先情報
         = f.hidden_field :customer_id, :value => @customer_id
+        = render "customer/shared/error_messages", resource: @order
         .form-group
           = f.label :name, "名前"
           = f.text_field :name, class: "form-control mt-2 mb-3"
