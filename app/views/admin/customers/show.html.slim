@@ -16,8 +16,8 @@
         p.fw-bold
           = @customer.name
         p
+        | 前回の注文数:　
         = @customer.orders.size
-        | Previous Orders
         p
         = @customer.email
       .bg-light.rounded.p-4.mb-3
@@ -29,14 +29,14 @@
           p.fw-bold.text-primary
             span.bg-primary-subtle.px-2.py-1.rounded
               - if @customer.status == "normal"
-                | Normal
+                | 有効
               - elsif @customer.status == "withdrawn"
-                | Withdrawn
+                | 退会
               - else
-                | Banned
+                | 利用停止
         = form_with model: @customer, url: admin_customer_path(@customer), local: true do |f|
-          = f.select :status, Customer.statuses.keys.to_a, {}, class: "form-control"
-          = f.submit "Update Status", class: "btn btn-primary mt-3 w-100"
+          = f.select :status, options_for_select(Customer.statuses.map { |k, _v| [t("activerecord.attributes.customer.statuses.#{k}"), k] }), class: "w-100 form-control"
+          = f.submit "更新する", class: "btn btn-primary mt-3 w-100"
     .col-md-7
       .bg-light.rounded.p-4.mb-3
         h4
@@ -56,7 +56,7 @@
                   td.align-middle
                     .fw-bold.text-primary
                       span.bg-primary-subtle.px-2.py-1.rounded
-                        = order.status
+                        = order.status_i18n
                   td.align-middle = l order.created_at, format: :short
                   td.align-middle = link_to admin_order_path(order), class: "btn btn-primary" do
                     | 詳細

@@ -7,10 +7,11 @@
       p.fw-bold = number_to_currency(@product.price, unit: "¥", strip_insignificant_zeros: true)
       p = @product.description
       - if @product.stock > 0
-        p.text-primary
-          | 在庫あり (
-          = @product.stock
-          | )
+        p.text-primary.mt-2
+          span.bg-primary-subtle.px-2.py-1.rounded
+            | 在庫あり (
+            = @product.stock
+            | )
       - else
         p.fw-bold.text-danger
           | 在庫なし

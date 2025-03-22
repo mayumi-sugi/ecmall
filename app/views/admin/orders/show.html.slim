@@ -21,6 +21,8 @@
           p
           | 数量:　
           = order_detail.quantity
+          br
+          br
       .bg-light.rounded.p-4
         h4
           | サマリー
@@ -42,8 +44,8 @@
         p.fw-bold
           = @order.customer.name
         p.border-bottom.pb-3
+          | 前回の注文数:　
           = @order.customer.orders.count
-          | Previous order
         p.mb-2
           = @order.customer.email
         h5.mt-3.mb-3
@@ -82,7 +84,7 @@
             | 現在のステータス:　
           p.fw-bold.text-primary
             span.bg-primary-subtle.px-2.py-2.rounded
-              = @order.status
+              = @order.status_i18n
         = form_with model: @order, url: admin_order_path(@order),local: true do |f|
-          p = f.select :status, Order.statuses.keys.to_a,{}, class: "w-100"
+          p = f.select :status, options_for_select(Order.statuses.map { |k, _v| [t("activerecord.attributes.order.statuses.#{k}"), k] }), class: "w-100 form-control"
           p = f.submit "更新する", class: "btn btn-primary w-100 mt-3"

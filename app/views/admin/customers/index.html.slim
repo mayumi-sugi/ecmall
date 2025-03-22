@@ -19,11 +19,11 @@
             .d-flex.align-items-center.fw-bold.text-primary
               span.bg-primary-subtle.px-2.py-1.rounded
                 - if customer.status == "normal"
-                  | Normal
+                  | 有効
                 - elsif customer.status == "withdrawn"
-                  | Withdrawn
+                  | 退会
                 - else
-                  | Banned
+                  | 利用停止
           / 注文の数の取得
           td.align-middle = customer.orders.size
           td.align-middle = link_to "編集", admin_customer_path(customer), class: "btn btn-primary"

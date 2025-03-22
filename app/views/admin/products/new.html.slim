@@ -1,21 +1,22 @@
 .container.w-75
-  .text-center.mt-5.mb-5
-    h1 商品の新規登録
+  .text-center.mt-5
+    h1.mb-5
+      | 新規登録
   = form_with model: [:admin, @product], local: true do |f|
     = render "admin/shared/error_messages", resource: @product
     .form-group
-      = f.label :name
+      = f.label :name, "商品名"
       = f.text_field :name, class: "form-control mt-2 mb-3"
     .form-group
-      = f.label :description
+      = f.label :description, "商品説明"
       = f.text_area :description, class: "form-control mt-2 mb-3"
     .form-group
-      = f.label :price
+      = f.label :price, "価格"
       = f.number_field :price, class: "form-control mt-2 mb-3"
     .form-group
-      = f.label :stock
+      = f.label :stock, "在庫"
       = f.number_field :stock, class: "form-control mt-2 mb-3"
     .form-group
-      = f.label :image
+      = f.label :image, "商品画像"
       = f.file_field :image, class: "form-control mt-2 mb-3"
-    = f.submit "作成する", class: "btn btn-primary mt-5 w-100"
+    = f.submit "登録する", class: "btn btn-primary mt-5 w-100"

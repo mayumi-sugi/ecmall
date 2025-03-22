@@ -12,9 +12,10 @@ class Admin::PagesController < ApplicationController
 
   def get_orders(params)
     if !params[:status].present? || !Order.statuses.keys.to_a.include?(params[:status])
+      # すべての注文を取得
       return [ Order.eager_load(:customer).latest, "all" ]
     end
-
+    # 指定されたステータスの注文のみ取得
     get_by_enum_value(params[:status])
   end
 
