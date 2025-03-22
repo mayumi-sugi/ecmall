@@ -9,6 +9,10 @@ class Order < ApplicationRecord
   end
 
   enum :status, { waiting_payment: 0, confirm_payment: 1, shipped: 2, out_of_delivery: 3, delivered: 4 }
+  def status_i18n
+    I18n.t("activerecord.attributes.order.status.#{status}")
+  end
+
   has_many :order_details, dependent: :destroy
 
   scope :waiting_payment, -> { where(status: "waiting_payment") }

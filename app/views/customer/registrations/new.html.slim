@@ -14,9 +14,9 @@
       = f.label :password, "パスワード", class: "mt-3"
       - if @minimum_password_length
         em
-          | (
+          | (最低
           = @minimum_password_length
-          |  characters minimum)
+          | 文字)
       br
       = f.password_field :password, class:"form-control mt-2", autocomplete: "new-password"
     .field

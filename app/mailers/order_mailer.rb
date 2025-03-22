@@ -8,6 +8,6 @@ class OrderMailer < ApplicationMailer
     @order = order
     @order_details = @order.order_details.includes(:product)
 
-    mail to: "to@example.org", subject: "ご注文が確定いたしました"
+    mail to: "to@example.org", subject: "決済が完了しました。"
   end
 end

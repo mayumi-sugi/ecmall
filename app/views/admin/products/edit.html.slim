@@ -5,10 +5,10 @@
   = form_with model: [:admin, @product], local: true do |f|
     = render "admin/shared/error_messages", resource: @product
     .form-group
-      = f.label :name, "名前", class: "mt-4"
+      = f.label :name, "商品名", class: "mt-4"
       = f.text_field :name, class: "form-control mt-2 mb-3"
     .form-group
-      = f.label :description, "商品の説明"
+      = f.label :description, "商品説明"
       = f.text_area :description, class: "form-control mt-2 mb-3"
     .form-group
       = f.label :price, "価格"

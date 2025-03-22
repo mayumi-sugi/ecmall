@@ -18,7 +18,7 @@
                 = number_to_currency(order.billing_amount, unit: "¥", strip_insignificant_zeros: true)
               p.fw-bold.text-primary
                 span.bg-primary-subtle.px-2.py-1.rounded
-                  = order.status
+                  = order.status_i18n
             .d-flex.justify-content-start
               p
                 | 名前:　

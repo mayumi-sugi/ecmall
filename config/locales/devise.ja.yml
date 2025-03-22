@@ -1,0 +1,66 @@
+ja:
+  activerecord:
+    models:
+        customer: "ユーザー"
+        admin: "管理者"
+        order: "注文"
+        product: "商品"
+    attributes:
+      customer:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認用）"
+        current_password: "現在のパスワード"
+        status: "ステータス"
+        statuses:
+          normal: "有効"
+          withdrawn: "退会"
+          banned: "利用停止"
+      order:
+        name: "名前"
+        postal_code: "郵便番号"
+        prefecture: "都道府県"
+        address1: "住所1"
+        address2: "住所2"
+        status:
+          waiting_payment: "入金待ち"
+          confirm_payment: "入金確認"
+          shipped: "出荷済み"
+          out_of_delivery: "配送中"
+          delivered: "配達済み"
+        statuses:
+          waiting_payment: "入金待ち"
+          confirm_payment: "入金確認"
+          shipped: "出荷済み"
+          out_of_delivery: "配送中"
+          delivered: "配達済み"
+      product:
+        name: "商品名"
+        description: "商品説明"
+        price: "価格"
+        image: "商品画像"
+  number:
+    currency:
+      format:
+        format: "%u%n"
+        precision: 0
+        unit: "¥"
+  devise:
+    failure:
+      unauthenticated: "ログインしてください。"
+      unconfirmed: "メールアドレスの確認が必要です。"
+      locked: "アカウントがロックされています。"
+      invalid: "メールアドレスまたはパスワードが違います。"
+      timeout: "セッションがタイムアウトしました。もう一度ログインしてください。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+    passwords:
+      send_instructions: "パスワードリセットの手順を送信しました。"
+      updated: "パスワードが変更されました。"
+    registrations:
+      signed_up: "アカウント登録が完了しました。"
+      updated: "アカウント情報を変更しました。"
+      destroyed: "アカウントを削除しました。"
+

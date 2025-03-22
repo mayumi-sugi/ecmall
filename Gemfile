@@ -6,6 +6,9 @@ gem "devise"
 gem "slim-rails"
 gem "html2slim-ruby3"
 gem "ransack"
+gem "rails-i18n"
+gem "devise-i18n"
+gem "enum_help"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
