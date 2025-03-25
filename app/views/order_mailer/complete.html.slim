@@ -3,7 +3,7 @@ p いつもecmallをご利用いただきありがとうございます。
 p ご注文のお支払いが完了いたしました。
 p 下記注文内訳をご確認ください。
 p ご注文番号: #{@order.id}
-p 注文日時: #{@order.created_at.strftime("%Y年%m月%d日 %H:%M")}
+p 注文日時: #{@order.created_at}
 table.table.table-bordered.table-hover
   - @order.order_details.each do |order_detail|
     tbody

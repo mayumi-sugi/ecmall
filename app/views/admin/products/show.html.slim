@@ -13,6 +13,7 @@
             = @product.stock
             | )
       - else
-        p.fw-bold.text-danger
-          | 在庫なし
+        p.text-danger.mt-2
+          span.bg-danger-subtle.px-2.py-1.rounded
+            | 在庫なし
       = link_to "編集", edit_admin_product_url(@product), class: "btn btn-primary w-100"

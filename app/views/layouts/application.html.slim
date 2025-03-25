@@ -21,8 +21,7 @@ html
   body
     nav.navbar.navbar-expand-lg.bg-body-tertiary
       .container
-        = link_to (admin_signed_in? ? admin_root_path : (customer_signed_in? ? products_path : root_path)), class: "navbar-brand" do
-          | ecmall
+        = link_to "ecmall", (admin_signed_in? ? admin_root_path : (customer_signed_in? ? products_path : root_path)), class: "navbar-brand"
         ul.navbar-nav.ml-auto.mb-2.mb-lg-0
           - if admin_signed_in?
             li.nav-item
@@ -49,8 +48,7 @@ html
                 | カート
                 = total_quantity(current_customer.cart_items)
             li.nav-item
-              = link_to orders_path, class: "nav-link" do
-                | 注文履歴
+              = link_to "注文履歴", orders_path, class: "nav-link"
             li.nav-item
               = link_to "ログアウト", destroy_customer_session_path, data: { turbo_method: :delete }, class: "nav-link"
           - else

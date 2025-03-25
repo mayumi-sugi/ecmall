@@ -13,8 +13,9 @@
             = @product.stock
             | )
       - else
-        p.fw-bold.text-danger
-          | 在庫なし
+        p.text-danger.mt-2
+          span.bg-danger-subtle.px-2.py-1.rounded
+            | 在庫なし
       -if @product.stock > 0
         = form_with model: @cart_item, data: { turbo: false } do |f|
           = f.hidden_field :product_id, :value => @product.id

@@ -5,7 +5,7 @@
     .col-lg-8
       .d-flex.justify-content-end.mb-2
         = sort_link(@q, :created_at, "新着順", default_order: :desc, class: "text-decoration-none text-secondary")
-        = sort_link(@q, :price, "価格が高い順", class: "text-decoration-none ms-3 text-secondary")
+        = sort_link(@q, :price, "価格順", default_order: :desc, class: "text-decoration-none ms-3 text-secondary")
       .row
         - @products.each do |product|
           .col-12.col-md-4.col-lg-4.mb-4
@@ -23,9 +23,10 @@
                         | )
                   - else
                     p.text-danger.mt-2
-                      | 在庫なし
+                      span.bg-danger-subtle.px-2.py-1.rounded
+                        | 在庫なし
     .col-lg-3.ms-1
-      = search_form_for @q, url: products_path, method: :get do |f|
+      = search_form_for @q, url: products_path do |f|
         h4.fw-bold.mb-3
           = f.label :name_cont, "商品検索"
         .d-flex.justify-content-between
