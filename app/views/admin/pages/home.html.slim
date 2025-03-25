@@ -15,7 +15,7 @@
       h4.fw-bold.me-2
         | 注文状況
       p
-        = f.select :status, options_for_select(Order.statuses.map { |k, _v| [t("activerecord.attributes.order.statuses.#{k}"), k] }, @selected), { prompt: "すべて" }, class: "w-100 form-control"
+        = f.select :status, options_for_select(Order.statuses.map { |k, _v| [t("activerecord.attributes.order.statuses.#{k}"), k] }, @selected), { prompt: "すべて" }, class: "form-control"
       p
         = f.submit "検索", class: "btn btn-primary ms-3"
   table.table.table-hover
@@ -36,5 +36,4 @@
               span.bg-primary-subtle.px-2.py-1.rounded
                 = order.status_i18n
           td.align-middle = l order.created_at, format: :short
-          td.align-middle = link_to admin_order_path(order), class: "text-decoration-none text-secondary fw-bold" do
-            | 詳細
+          td.align-middle = link_to "詳細", admin_order_path(order), class: "text-decoration-none text-secondary fw-bold"

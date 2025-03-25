@@ -9,13 +9,8 @@ class Customer::OrdersController < ApplicationController
   end
 
   def new
-    # customer_id : customer 情報の取得（id)
     @customer = current_customer
     @order = Order.new
-    #
-    # billing amount: カート情報の取得(価格、個数)
-    #                  合計金額を計算
-    # postage : 送料
     @subtotal = @customer.cart_items.inject(0) { |sum, cart_item| sum + cart_item.line_total }
     @billing_amount = @subtotal + POSTAGE
   end
@@ -23,7 +18,6 @@ class Customer::OrdersController < ApplicationController
   def create
     ActiveRecord::Base.transaction do
       @order = current_customer.orders.new(order_params)
-      # @order.customer_id = current_customer.id
 
       if @order.save
         create_order_details(@order)
@@ -31,13 +25,13 @@ class Customer::OrdersController < ApplicationController
         current_customer.cart_items.destroy_all
         redirect_to success_orders_path(@order), notice: "購入が完了しました"
       else
-        # binding.irb
         @customer = current_customer
         @subtotal = @customer.cart_items.inject(0) { |sum, cart_item| sum + cart_item.line_total }
         @billing_amount = @subtotal + POSTAGE
         render :new, status: :unprocessable_entity
       end
     end
+  # 例外処理
   rescue ActiveRecord::RecordInvalid
     flash[:alert] = "購入に失敗しました"
     render :new
@@ -50,7 +44,6 @@ class Customer::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:name, :postal_code, :prefecture, :address1, :address2, :postage, :billing_amount, :status)
   end
-
   def create_order_details(order)
     current_customer.cart_items.each do |cart_item|
       order.order_details.create!(

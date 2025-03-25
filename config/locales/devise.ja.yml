@@ -46,21 +46,3 @@ ja:
         format: "%u%n"
         precision: 0
         unit: "¥"
-  devise:
-    failure:
-      unauthenticated: "ログインしてください。"
-      unconfirmed: "メールアドレスの確認が必要です。"
-      locked: "アカウントがロックされています。"
-      invalid: "メールアドレスまたはパスワードが違います。"
-      timeout: "セッションがタイムアウトしました。もう一度ログインしてください。"
-    sessions:
-      signed_in: "ログインしました。"
-      signed_out: "ログアウトしました。"
-    passwords:
-      send_instructions: "パスワードリセットの手順を送信しました。"
-      updated: "パスワードが変更されました。"
-    registrations:
-      signed_up: "アカウント登録が完了しました。"
-      updated: "アカウント情報を変更しました。"
-      destroyed: "アカウントを削除しました。"
-

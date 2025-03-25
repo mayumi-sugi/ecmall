@@ -16,14 +16,16 @@
           td.align-middle = customer.name
           td.align-middle = customer.email
           td.align-middle
-            .d-flex.align-items-center.fw-bold.text-primary
-              span.bg-primary-subtle.px-2.py-1.rounded
-                - if customer.status == "normal"
+            .d-flex.align-items-center.fw-bold
+              - if customer.status == "normal"
+                span.text-primary.bg-primary-subtle.px-2.py-1.rounded
                   | 有効
-                - elsif customer.status == "withdrawn"
+              - elsif customer.status == "withdrawn"
+                span.text-secondary.bg-secondary-subtle.px-2.py-1.rounded
                   | 退会
-                - else
+              - else
+                span.text-danger.bg-danger-subtle.px-2.py-1.rounded
                   | 利用停止
           / 注文の数の取得
           td.align-middle = customer.orders.size
-          td.align-middle = link_to "編集", admin_customer_path(customer), class: "btn btn-primary"
+          td.align-middle = link_to "詳細", admin_customer_path(customer), class: "text-decoration-none text-secondary fw-bold"
